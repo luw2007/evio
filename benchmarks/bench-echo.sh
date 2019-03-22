@@ -33,5 +33,5 @@ function gobench {
 }
 
 gobench "GO STDLIB" bin/net-echo-server net-echo-server/main.go 5001
-gobench "EVIO" bin/evio-echo-server ../old/echo-server/main.go 5002
+gobench "OLD EVIO" bin/old-evio-echo-server ../old/echo-server/main.go 5002
 gobench "EVIO" bin/evio-echo-server ../examples/echo-server/main.go 5003

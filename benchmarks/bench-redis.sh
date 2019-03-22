@@ -40,5 +40,6 @@ function gobench {
     echo ""
 }
 gobench "REAL REDIS" redis-server "" 6392
-gobench "OLD EVIO REDIS CLONE" bin/evio-redis-server ../examples/redis-server/main.go 6393
+gobench "REDCON" bin/redcon-redis-server redcon-redis-server/main.go 6395
+gobench "OLD EVIO REDIS CLONE" bin/old-evio-redis-server ../examples/redis-server/main.go 6393
 gobench "EVIO REDIS CLONE" bin/evio-redis-server ../examples/redis-server/main.go 6394

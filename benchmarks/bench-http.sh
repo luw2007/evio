@@ -34,4 +34,5 @@ function gobench {
 
 gobench "GO STDLIB" bin/net-http-server net-http-server/main.go 8081
 gobench "FASTHTTP" bin/fasthttp-server fasthttp-server/main.go 8083
+gobench "OLD EVIO" bin/evio-http-server ../old/http-server/main.go 8082
 gobench "EVIO" bin/evio-http-server ../examples/http-server/main.go 8084

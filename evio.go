@@ -5,11 +5,15 @@
 package evio
 
 import (
+	"context"
 	"io"
 	"net"
 	"os"
 	"strings"
+	"syscall"
 	"time"
+
+	"golang.org/x/sys/unix"
 )
 
 // Action is an action that occurs after the completion of an event.
@@ -156,19 +160,15 @@ func Serve(events Events, addr ...string) error {
 		if ln.network == "unix" {
 			os.RemoveAll(ln.addr)
 		}
+		var lc net.ListenConfig
 		var err error
+		if ln.opts.reusePort {
+			lc.Control = reuseportControl
+		}
 		if ln.network == "udp" {
-			if ln.opts.reusePort {
-				ln.pconn, err = reuseportListenPacket(ln.network, ln.addr)
-			} else {
-				ln.pconn, err = net.ListenPacket(ln.network, ln.addr)
-			}
+			ln.pconn, err = lc.ListenPacket(context.Background(), ln.network, ln.addr)
 		} else {
-			if ln.opts.reusePort {
-				ln.ln, err = reuseportListen(ln.network, ln.addr)
-			} else {
-				ln.ln, err = net.Listen(ln.network, ln.addr)
-			}
+			ln.ln, err = lc.Listen(context.Background(), ln.network, ln.addr)
 		}
 		if err != nil {
 			return err
@@ -265,4 +265,15 @@ func parseAddr(addr string) (network, address string, opts addrOpts, stdlib bool
 		address = address[:q]
 	}
 	return
+}
+
+func reuseportControl(network, address string, c syscall.RawConn) error {
+	var opErr error
+	err := c.Control(func(fd uintptr) {
+		opErr = syscall.SetsockoptInt(int(fd), syscall.SOL_SOCKET, unix.SO_REUSEPORT, 1)
+	})
+	if err != nil {
+		return err
+	}
+	return opErr
 }

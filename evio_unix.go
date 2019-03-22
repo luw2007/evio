@@ -16,8 +16,7 @@ import (
 	"syscall"
 	"time"
 
-	reuseport "github.com/kavu/go_reuseport"
-	"github.com/tidwall/evio/internal"
+	"github.com/luw2007/evio/internal"
 )
 
 type conn struct {
@@ -523,12 +522,4 @@ func (ln *listener) system() error {
 	}
 	ln.fd = int(ln.f.Fd())
 	return syscall.SetNonblock(ln.fd, true)
-}
-
-func reuseportListenPacket(proto, addr string) (l net.PacketConn, err error) {
-	return reuseport.ListenPacket(proto, addr)
-}
-
-func reuseportListen(proto, addr string) (l net.Listener, err error) {
-	return reuseport.Listen(proto, addr)
 }

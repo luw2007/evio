@@ -2,26 +2,38 @@
 --- BENCH REDIS PIPELINE 16 START ---
 
 --- REAL REDIS ---
-32002:C 04 Nov 13:14:20.410 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-32002:C 04 Nov 13:14:20.410 # Redis version=4.0.2, bits=64, commit=00000000, modified=0, pid=32002, just started
-32002:C 04 Nov 13:14:20.410 # Configuration loaded
-32002:M 04 Nov 13:14:20.411 * Increased maximum number of open files to 10032 (it was originally set to 1024).
-32002:M 04 Nov 13:14:20.411 * Running mode=standalone, port=6392.
-32002:M 04 Nov 13:14:20.412 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
-32002:M 04 Nov 13:14:20.412 # Server initialized
-32002:M 04 Nov 13:14:20.412 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
-32002:M 04 Nov 13:14:20.412 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
-32002:M 04 Nov 13:14:20.412 * Ready to accept connections
+93236:C 22 Mar 23:05:33.863 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+93236:C 22 Mar 23:05:33.864 # Redis version=4.9.101, bits=64, commit=ae9687de, modified=1, pid=93236, just started
+93236:C 22 Mar 23:05:33.864 # Configuration loaded
+93236:M 22 Mar 23:05:33.865 * Increased maximum number of open files to 10032 (it was originally set to 4864).
+93236:M 22 Mar 23:05:33.866 * Running mode=standalone, port=6392.
+93236:M 22 Mar 23:05:33.866 # Server initialized
+93236:M 22 Mar 23:05:33.866 * Ready to accept connections
 *** 50 connections, 1000000 commands, 16 commands pipeline
-PING_INLINE: 0.00PING_INLINE: 874135.50PING_INLINE: 877221.56PING_INLINE: 877315.62PING_INLINE: 877810.12PING_INLINE: 879507.50 requests per second
+PING_INLINE: 0.00PING_INLINE: 368637.47PING_INLINE: 387832.34PING_INLINE: 344053.12PING_INLINE: 349224.31PING_INLINE: 362675.19PING_INLINE: 366956.75PING_INLINE: 368912.72PING_INLINE: 363159.25PING_INLINE: 366217.50PING_INLINE: 360035.16PING_INLINE: 352755.53PING_INLINE: 351370.34 requests per second
+
+--- DONE ---
+
+--- REDCON ---
+2019/03/22 23:05:38 started server at :6395
+*** 50 connections, 1000000 commands, 16 commands pipeline
+PING_INLINE: 0.00PING_INLINE: 199301.58PING_INLINE: 191745.03PING_INLINE: 201638.31PING_INLINE: 237634.73PING_INLINE: 270134.19PING_INLINE: 290691.09PING_INLINE: 304337.91PING_INLINE: 287528.47PING_INLINE: 294597.69PING_INLINE: 303942.44PING_INLINE: 306081.38PING_INLINE: 315027.31PING_INLINE: 318775.91 requests per second
+
+--- DONE ---
+
+--- OLD EVIO REDIS CLONE ---
+2019/03/22 23:05:42 redis server started on port 6393 (loops: 1)
+2019/03/22 23:05:42 redis server started at socket (loops: 1)
+*** 50 connections, 1000000 commands, 16 commands pipeline
+PING_INLINE: 0.00PING_INLINE: 401912.38PING_INLINE: 386043.94PING_INLINE: 393629.84PING_INLINE: 385870.12PING_INLINE: 387095.12PING_INLINE: 381889.41PING_INLINE: 391264.41PING_INLINE: 405045.50PING_INLINE: 395630.53PING_INLINE: 398139.06PING_INLINE: 398406.38 requests per second
 
 --- DONE ---
 
 --- EVIO REDIS CLONE ---
-2017/11/04 13:14:22 redis server started on port 6393
-2017/11/04 13:14:22 redis server started at socket
+2019/03/22 23:05:46 redis server started on port 6394 (loops: 1)
+2019/03/22 23:05:46 redis server started at socket (loops: 1)
 *** 50 connections, 1000000 commands, 16 commands pipeline
-PING_INLINE: -nanPING_INLINE: 2127552.00PING_INLINE: 2123142.25 requests per second
+PING_INLINE: 0.00PING_INLINE: 422757.00PING_INLINE: 411912.19PING_INLINE: 412079.91PING_INLINE: 367603.59PING_INLINE: 351224.81PING_INLINE: 357980.12PING_INLINE: 363779.44PING_INLINE: 382478.84PING_INLINE: 374512.50PING_INLINE: 375439.19PING_INLINE: 377358.47 requests per second
 
 --- DONE ---
 

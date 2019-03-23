@@ -30,16 +30,23 @@ function gobench {
     fi
     GOMAXPROCS=1 $2 --port $4 &
     sleep 1
+    echo "*** 10 connections, 1000000 commands, $pl commands pipeline"
+    redis-benchmark -p $4 -t ping_inline -q -c 10 -P $pl -n 100000
+    sleep 1
+    echo "*** 20 connections, 1000000 commands, $pl commands pipeline"
+    redis-benchmark -p $4 -t ping_inline -q -c 20 -P $pl -n 100000
+    sleep 1
     echo "*** 50 connections, 1000000 commands, $pl commands pipeline"
-    redis-benchmark -p $4 -t ping_inline -q -c 50 -P $pl -n 1000000
-    # echo "*** 50 connections, 1000000 commands, 10 commands pipeline"
-    # redis-benchmark -p $4 -t ping_inline -q -c 50 -P 10 -n 1000000
-    # echo "*** 50 connections, 1000000 commands, 20 commands pipeline"
-    # redis-benchmark -p $4 -t ping_inline -q -c 50 -P 20 -n 1000000
+    redis-benchmark -p $4 -t ping_inline -q -c 50 -P $pl -n 100000
+    #echo "*** 50 connections, 1000000 commands, 10 commands pipeline"
+    #redis-benchmark -p $4 -t ping_inline -q -c 50 -P 10 -n 1000000
+    #echo "*** 50 connections, 1000000 commands, 20 commands pipeline"
+    #redis-benchmark -p $4 -t ping_inline -q -c 50 -P 20 -n 1000000
     echo "--- DONE ---"
     echo ""
 }
 gobench "REAL REDIS" redis-server "" 6392
 gobench "REDCON" bin/redcon-redis-server redcon-redis-server/main.go 6395
+gobench "REDEO" bin/redeo-redis-server redeo-redis-server/main.go 6396
 gobench "OLD EVIO REDIS CLONE" bin/old-evio-redis-server ../examples/redis-server/main.go 6393
 gobench "EVIO REDIS CLONE" bin/evio-redis-server ../examples/redis-server/main.go 6394

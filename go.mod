@@ -3,6 +3,7 @@ module github.com/luw2007/evio
 go 1.12
 
 require (
+	github.com/bsm/redeo v2.2.0+incompatible // indirect
 	github.com/kavu/go_reuseport v1.4.0 // indirect
 	github.com/tidwall/evio v1.0.2
 	github.com/tidwall/redcon v1.0.0

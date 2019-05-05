@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/bsm/redeo v2.2.0+incompatible // indirect
 	github.com/kavu/go_reuseport v1.4.0 // indirect
+	github.com/secmask/go-redisproto v0.0.0-20170511031412-14323b204640 // indirect
 	github.com/tidwall/evio v1.0.2
 	github.com/tidwall/redcon v1.0.0
 	github.com/valyala/fasthttp v1.2.0
